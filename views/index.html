@@ -1,51 +1,172 @@
-<!-- This is a static file -->
-<!-- served from your routes in server.js -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A cool thing made with Glitch">
-
-    <title>Welcome to Glitch!</title>
-
-    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
-    <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/style.css">
-
-    <!-- import the webpage's client-side javascript file -->
-    <script src="/client.js" defer></script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MovieMe!</title>
+    <link rel="stylesheet" href="../public/style.css" />
+    <script
+      src="https://kit.fontawesome.com/51e1fac463.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../public/client.js" defer></script>
   </head>
   <body>
+    <!-- LOGIN -->
+    <div class="loginModal">
+      <div class="modalForm">
+        <i class="fa-solid fa-circle-xmark" id="cerrarLogin"></i>
+        <div class="actionBtns">
+          <button class="actionBtn signupBtn">Registrarse</button>
+          <button class="actionBtn loginBtn">Ingresar</button>
+          <button class="moveBtn">Registrarse</button>
+        </div>
+        <div class="userForm">
+          <form action="" class="form singup singupForm">
+            <div class="inputGroup">
+              <input
+                type="text"
+                placeholder="Usuario"
+                id="usuarioInpRegister"
+              />
+            </div>
+
+            <div class="inputGroup">
+              <input
+                type="password"
+                placeholder="Crear una contraseña"
+                id="passInpRegister"
+              />
+            </div>
+            <div class="inputGroup">
+              <input
+                type="password"
+                placeholder="Confirmar contraseña"
+                id="confirmarInpRegister"
+              />
+            </div>
+            <input
+              type="button"
+              class="submitBtn"
+              id="registrarseBtn"
+              value="Registrarse"
+            />
+          </form>
+
+          <form action="" class="form login">
+            <div class="inputGroup">
+              <input type="text" placeholder="Usuario" id="usuarioInpLogin" />
+            </div>
+            <div class="inputGroup">
+              <input
+                type="password"
+                placeholder="Contraseña"
+                id="passInpLogin"
+              />
+            </div>
+            <p class="brandsText">o</p>
+            <ul class="brands">
+              <li>
+                <a href="#"><i class="fa-brands fa-google-plus"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+              </li>
+            </ul>
+            <input
+              type="button"
+              class="submitBtn"
+              id="ingresarBtn"
+              value="Ingresar"
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- /LOGIN -->
     <header>
-      <h1>A Dream of the Future</h1>
+      <!-- NAV -->
+      <nav>
+        <a class="logo" href="#"></a>
+        <div class="navbar">
+          <ul>
+            <li id="navResponsive">
+              <div class="lista">
+                <a href="#referenciaRecomendados">Recomendados</a>
+              </div>
+              <div class="lista"><a href="#miLista">Favoritos</a></div>
+              <button id="signUpBtn">Sign Up</button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- /NAV -->
     </header>
-
     <main>
-      <h2>Oh hi,</h2>
-
-      <p>Tell me your hopes and dreams:</p>
-
-      <form>
-        <label>
-          New Dream
-          <input name="dream" type="text" maxlength="100" required placeholder="Dreams!">
-        </label>
-        
-        <button type="submit" id="submit-dream">Add Dream</button>
-      </form>
-
-      <section class="dreams">
-        <ul id="dreams"></ul>
+      <!-- SEARCH -->
+      <div class="container">
+        <h1 id="tituloPrincipal">
+          Llevá <span>TU</span> cine<br />
+          de la <span>mejor</span> manera
+        </h1>
+        <h3>Buscá tu película o serie favorita</h3>
+        <div class="busqueda" id="referencia-ampliacion">
+          <form>
+            <input
+              type="text"
+              id="inputSearch"
+              placeholder="Busca una película o serie..."
+              autocomplete="off"
+            />
+            <button id="searchBtn" type="submit">
+              <a href="#encontrados"><i class="fa fa-search"></i></a>
+            </button>
+          </form>
+        </div>
+      </div>
+      <!-- /SEARCH -->
+      <!-- AMPLIADOS -->
+      <section class="buscados">
+        <div class="ampliadosDiv"></div>
+        <div class="encontrados" id="encontrados"></div>
       </section>
+      <!-- /AMPLIADOS -->
+      <!-- RECOMENDADOS -->
+      <section class="sectRecomendados" id="referenciaRecomendados">
+        <div class="subtitulos">
+          <h2><span>PELIS</span> DEL MOMENTO:</h2>
+        </div>
+        <div class="recomendados">
+          <div class="container">
+            <ul id="card-slider"></ul>
+          </div>
+        </div>
+      </section>
+      <!-- /RECOMENDADOS -->
+      <!-- LISTA -->
+      <section id="miLista">
+        <div class="subtitulo container-filtrar">
+          <h2><span>TUS</span> FAVORITOS:</h2>
+          <div class="custom-select">
+            <select id="filtro">
+              <option value="todas">Todas</option>
+              <option value="vistas">Vistas</option>
+              <option value="sinVer">Sin Ver</option>
+            </select>
+          </div>
+        </div>
+        <ul class="listaDeFavs">
+          <div>
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <h3>Ingresa para esta función</h3>
+          </div>
+        </ul>
+      </section>
+      <!-- /LISTA -->
     </main>
-
-    <footer>Made with <a href="https://glitch.com">Glitch</a>!</footer>
-
-    <!-- include the Glitch button to show what the webpage is about and
-          to make it easier for folks to view source and remix -->
-    <div class="glitchButton" style="position:fixed;top:2em;right:20px;"></div>
-    <script src="https://button.glitch.me/button.js" defer></script>
   </body>
 </html>
