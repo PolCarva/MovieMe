@@ -17,7 +17,6 @@ app.get("/", function(request, response) {
 });
 
 
-
 //Importo los modelos
 let Usuario = require("./models/Usuario");
 let Peli = require("./models/Peli");
