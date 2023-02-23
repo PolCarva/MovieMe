@@ -19,7 +19,7 @@
 
 body {
   width: 100%;
-  background-image: url(/assets/collage1-min.jpg),
+  background-image: url(https://cdn.glitch.global/eceb620d-26a4-4ab0-977f-4095697c5e57/collage1-min.jpg?v=1677168383803),
     linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
   background-blend-mode: multiply;
   background-position: center;
@@ -135,7 +135,7 @@ nav {
 }
 
 .logo {
-  background-image: url(//assets/Logo.png);
+  background-image: url(https://cdn.glitch.global/eceb620d-26a4-4ab0-977f-4095697c5e57/Logo.png?v=1677168391615);
   width: 20%;
   background-size: contain;
   background-repeat: no-repeat;
@@ -450,7 +450,7 @@ nav {
   height: 100%;
   width: 100%;
   margin: auto;
-  background-image: url(/assets/imfNotFound.jpg);
+  background-image: url(https://cdn.glitch.global/eceb620d-26a4-4ab0-977f-4095697c5e57/imfNotFound.jpg?v=1677168529277);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
