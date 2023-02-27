@@ -23,6 +23,9 @@ let Peli = require("./models/Peli");
 
 //Conecto con la db
 let mongoose = require("mongoose");
+
+mongoose.set('strictQuery', true);
+
 mongoose.connect(
   "mongodb+srv://admin:admin@cluster0.sm6ytdf.mongodb.net/pelidb?retryWrites=true&w=majority"
 );
