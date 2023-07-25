@@ -1,7 +1,6 @@
 //ELEMENTOS
-console.log("hola")
 const apikey = `dffa752f0a887fb5f01920bd042af708`;
-const URL = `http://localhost:3000`;
+const URL = `https://movie-me.glitch.me`;
 
 const cardSlider = document.querySelector("#card-slider");
 
