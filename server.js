@@ -27,7 +27,7 @@ let mongoose = require("mongoose");
 mongoose.set('strictQuery', true);
 
 mongoose.connect(
-  "mongodb+srv://admin:admin@cluster0.sm6ytdf.mongodb.net/pelidb?retryWrites=true&w=majority"
+  process.env.MONGO_URL,
 );
 let db = mongoose.connection;
 db.once("open", () => {
@@ -111,7 +111,7 @@ app.delete("/pelis/:idBorrar", (req, res) => {
   Peli.findByIdAndDelete(
     idBorrar,
     (err, peliBorrada) => {
-      console.log("BORRADA: "+peliBorrada.nombre );
+      console.log("BORRADA: "+ peliBorrada.nombre );
       res.json(peliBorrada);
     }
   );

@@ -38,7 +38,6 @@ fetchTrends();
 button.addEventListener("click", fetchBuscar);
 
 if (localStorage.id_valido) {
-  console.log(localStorage);
   abrirCerrarLogin();
   dataPelis = JSON.parse(localStorage.pelis);
   listarPelis(dataPelis);
@@ -101,7 +100,6 @@ function fetchBuscar(e) {
   )
     .then((r) => r.json())
     .then((d) => {
-      console.log(d);
 
       d.results.forEach((e) => {
         let nombre = e.title;
@@ -146,12 +144,10 @@ function fetchBuscar(e) {
 }
 
 function fetchAmpliar() {
-  console.log(this.dataset.movie);
   fetch(`https://api.themoviedb.org/3/movie/${this.dataset.movie}?api_key=${apikey}&language=es}
   `)
     .then((r) => r.json())
     .then((d) => {
-      console.log(d);
       let img = `https://image.tmdb.org/t/p/original/${d.backdrop_path}`;
       if (d.backdrop_path != null) {
         img = img;
@@ -201,17 +197,14 @@ function agregarFav() {
   })
     .then((respuesta) => respuesta.json())
     .then((datos) => {
-      console.log(datos.peliInsertada.nombre);
       if (
         dataPelis.find((x) => x.nombre == datos.peliInsertada.nombre) !=
         undefined
       ) {
-        console.log("ya existe");
       } else {
         dataPelis.push(datos.peliInsertada);
         listarPelis(dataPelis);
       }
-      console.log(dataPelis);
     });
 }
 
@@ -273,7 +266,6 @@ function modificarVisto() {
   let idModificar = this.getAttribute("data-idModificar");
   let vistoModificado = Boolean;
   this.checked == true ? (vistoModificado = true) : (vistoModificado = false);
-  console.log(vistoModificado);
 
   fetch(`${URL}/pelis/${idModificar}`, {
     method: "PUT",
@@ -287,7 +279,6 @@ function modificarVisto() {
     .then((respuesta) => respuesta.json())
     .then((datos) => {
       let posicionModificar = dataPelis.findIndex((e) => e._id == datos._id);
-      console.log(dataPelis[posicionModificar]);
       dataPelis[posicionModificar].visto = vistoModificado;
     })
     .catch((e) => console.log(e));
@@ -296,7 +287,6 @@ function modificarVisto() {
 function modificarComentario() {
   let parrafo = this.nextElementSibling.nextElementSibling.firstElementChild;
   if (this.classList.contains("fas")) {
-    console.log("si");
     this.classList.add("fa-solid");
     this.classList.add("fa-check");
     this.classList.remove("fas");
@@ -304,7 +294,6 @@ function modificarComentario() {
     parrafo.setAttribute("contenteditable", true);
     parrafo.style.border = "2px solid var(--color-white)";
   } else {
-    console.log("no");
     this.classList.remove("fa-solid");
     this.classList.remove("fa-check");
     this.classList.add("fas");
@@ -318,7 +307,6 @@ function modificarComentario() {
 
 function establecerComentario(p) {
   let idModificar = p.getAttribute("data-id");
-  console.log(p.textContent);
 
   fetch(`${URL}/pelis/${idModificar}`, {
     method: "PUT",
@@ -332,7 +320,6 @@ function establecerComentario(p) {
     .then((respuesta) => respuesta.json())
     .then((datos) => {
       let posicionModificar = dataPelis.findIndex((e) => e._id == datos._id);
-      console.log(dataPelis[posicionModificar]);
       dataPelis[posicionModificar].comentario = p.textContent;
     })
     .catch((e) => console.log(e));
@@ -349,7 +336,6 @@ function eliminarPeli() {
   })
     .then((respuesta) => respuesta.json())
     .then((peli) => {
-      console.log(peli);
       let indxPeli = dataPelis.findIndex((e) => e.nombre === peli.nombre);
       dataPelis.splice(indxPeli, 1);
       filtrar();
@@ -362,11 +348,9 @@ function filtrar() {
     listarPelis(dataPelis);
   } else if (filtro.value == "sinVer") {
     let resultado = dataPelis.filter((e) => e.visto == false);
-    console.log(resultado);
     listarPelis(resultado);
   } else if (filtro.value == "vistas") {
     let resultado = dataPelis.filter((e) => e.visto == true);
-    console.log(resultado);
     listarPelis(resultado);
   }
 }
@@ -435,7 +419,6 @@ function validarForm() {
   let loginActivo = document.querySelector(".loginForm");
 
   if (loginActivo == null) {
-    console.log("Register");
     if (
       !validarInp(userInpRegister) ||
       !validarInp(passInpRegister) ||
@@ -446,7 +429,6 @@ function validarForm() {
       alert("Las contraseñas no coinciden");
     } else {
       //TODO OK
-      console.log("Bien");
       registrar(userInpRegister.value, passInpRegister.value);
     }
   } else {
@@ -480,11 +462,9 @@ function ingresar(_user, _pass) {
   })
     .then((respuesta) => respuesta.json())
     .then((datos) => {
-      console.log(datos);
       if (datos.id_valido == false) {
         alert("no existe ese usuario");
       } else {
-        console.log(datos);
         dataPelis = datos.dataPelis;
         dataPelis.length > 0
           ? listarPelis(dataPelis)
